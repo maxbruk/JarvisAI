@@ -90,3 +90,13 @@ Press `Ctrl + C` at any time to stop.
 - **Voice Profile**: Modify `voice="af_heart"` in `pipeline(text, voice="af_heart", speed=1.0)` to switch voices (e.g., `am_adam`, `af_bella`, `am_michael`, `af_sky`).
 - **Whisper Model**: In `r.recognize_whisper(audio, model="base.en")`, choose `tiny.en` for faster response times or `small.en` / `medium.en` for improved accuracy.
 - **LLM Model**: Change `"model": "llama3.2:3b"` to any other model available in your Ollama setup.
+
+## Todo
+
+- [ ] Wake-word activation (only dispatch prompts when keywords like "Jarvis" or "Hey Jarvis" are detected)
+- [ ] Voice command controls (such as exiting the program by voice)
+- [ ] Optimized voice recognition loop and reduced latency
+- [ ] System automation: allow the LLM to inspect, open, and control local files
+- [ ] Web access: tool-calling for real-time data lookup (weather, stock prices, live information)
+- [ ] Computer vision and real-time object recognition
+- [ ] Docker container support
