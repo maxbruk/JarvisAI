@@ -84,8 +84,6 @@ def main():
                     print(response.json()["response"])
                     Speak(response.json()["response"])
 
-                
-
 
 if __name__ == "__main__":
     main()
