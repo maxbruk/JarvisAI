@@ -93,8 +93,8 @@ Press `Ctrl + C` at any time to stop.
 
 ## Todo
 
-- [ ] Wake-word activation (only dispatch prompts when keywords like "Jarvis" or "Hey Jarvis" are detected)
-- [ ] Voice command controls (such as exiting the program by voice)
+- [x] Wake-word activation (only dispatch prompts when keywords like "Jarvis" or "Hey Jarvis" are detected)
+- [x] Voice command controls (such as exiting the program by voice)
 - [ ] Optimized voice recognition loop and reduced latency
 - [ ] System automation: allow the LLM to inspect, open, and control local files
 - [ ] Web access: tool-calling for real-time data lookup (weather, stock prices, live information)
