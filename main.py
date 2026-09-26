@@ -1,5 +1,6 @@
 import sys
 import time
+import threading
 
 import openwakeword
 import requests
@@ -15,7 +16,7 @@ source = sr.Microphone()
 
 
 def Speak(text: str):
-    generator = pipeline(text, voice="af_heart", speed=1.0)
+    generator = pipeline(text, voice="af_heart", speed=2.0)
     for _, _, audio in generator:
         time.sleep(0.5)
         sd.play(audio, samplerate=24000)
@@ -54,13 +55,15 @@ def main():
     model = openwakeword.Model(wakeword_models=["hey jarvis"])
     talking = False
 
+    
     with sd.InputStream(samplerate=16000, channels=1, dtype="int16") as stream:
 
         while True:
             audio_data, _ = stream.read(1280)
             prediction = model.predict(x=audio_data.flatten())
             score = prediction["hey jarvis"]
-            print(f"{score:.4f}")
+            # print(f"{score:.4f}")
+            # ^ uncomment to debug prediction scores
 
             if score > 0.5 and talking == False:
                 print("Command recognized! Listening...")
@@ -82,7 +85,9 @@ def main():
                     response = requests.post(url, json=data)
 
                     print(response.json()["response"])
-                    Speak(response.json()["response"])
+                    thread_speak = threading.Thread(target=Speak, args=[response.json()["response"]],)
+                    # Speak(response.json()["response"])
+                    thread_speak.start()
 
 
 if __name__ == "__main__":
